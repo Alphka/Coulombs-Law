@@ -1,0 +1,318 @@
+$primary-color: #082032;
+$secondary-color: #2C394B;
+$terciary-color: #FF4C29;
+$error-color: #ff2f2f;
+
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+:root{
+	--font-size: 16px;
+
+	@media screen and (max-width: 276px){
+		--font-size: 10px;
+	}
+
+	@media screen and (min-width: 276px) and (max-width: 600px){
+		--font-size: 14px;
+	}
+}
+
+body{
+	background-color: $primary-color;
+	color: #eee;
+	font-size: var(--font-size);
+	font-family: Verdana, Tahoma, Georgia, Arial, sans-serif;
+}
+
+main{
+	$max-width: 1000px;
+
+	max-width: $max-width;
+	margin: auto;
+
+	> header{
+		display: flex;
+		justify-content: center;
+		max-width: calc(100% - 40px);
+		margin: 10px auto auto;
+		padding-bottom: 20px;
+		border-bottom: 1px solid $secondary-color;
+	}
+
+	> article{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-content: center;
+
+		margin-top: 20px;
+		min-width: 200px;
+		max-width: $max-width;
+
+		> section{
+			margin-bottom: 10px;
+
+			&#constant{
+				> label{
+					display: flex;
+					flex-direction: column;
+					gap: 5px;
+
+					> p{
+						display: block;
+						text-align: center;
+
+						&:nth-child(1){
+							font-weight: 400;
+						}
+
+						&:nth-child(2){
+							input{
+								background-color: transparent;
+								width: 4em;
+								min-width: 3em;
+								color: inherit;
+								text-align: right;
+								font-size: inherit;
+								border-bottom: 1px solid $secondary-color;
+								padding-right: calc(1em - 7px);
+
+								&::-webkit-outer-spin-button,
+								&::-webkit-inner-spin-button{
+									-moz-appearance: none;
+									-webkit-appearance: none;
+									margin: 0;
+								}
+
+								&::-webkit-calendar-picker-indicator{
+									display: none!important;
+									opacity: 0;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&#content{
+				padding-top: 10px;
+				border-top: 1px solid $secondary-color;
+
+				header{
+					display: flex;
+					justify-content: center;
+				}
+
+				nav{
+					margin-top: 10px;
+
+					ol{
+						display: flex;
+						flex-wrap: nowrap;
+						flex-direction: row;
+						justify-content: center;
+						list-style: none;
+						margin: 0 20px;
+						gap: 2px;
+
+						li{
+							$border-radius: 10px;
+							$active-color: #004410;
+
+							text-align: center;
+							background-color: $terciary-color;
+							display: inline-block;
+							padding: 5px 10px;
+							flex: 1;
+							cursor: pointer;
+							user-select: none;
+
+							&:first-child{
+								border-top-left-radius: $border-radius;
+								border-bottom-left-radius: $border-radius;
+							}
+
+							&:last-child{
+								border-top-right-radius: $border-radius;
+								border-bottom-right-radius: $border-radius;
+							}
+
+							&:not([active]):active{
+								// transform: translate(0, 1px);
+								box-shadow: 0 0 5px black inset;
+							}
+
+							&[active]{
+								background-color: $active-color;
+							}
+						}
+					}
+				}
+
+				section{
+					background-color: #141e24;
+					border: 1px solid $secondary-color;
+					border-radius: 5px;
+					padding: 20px 5px;
+					min-height: 200px;
+					margin: 20px 20px auto;
+
+					menu{
+						padding-top: 4pt;
+						list-style: none;
+
+						li{
+							display: flex;
+							flex-direction: column;
+
+							label{
+								display: flex;
+								justify-content: center;
+								gap: 10px;
+								padding: 3px 0;
+
+								@media screen and (max-width: 360px){
+									justify-content: space-between;
+									padding: 3px;
+									gap: initial;
+								}
+
+								> p{
+									@media screen and (min-width: 360px){
+										min-width: 20vw;
+
+										@media screen and (min-width: 600px){
+											min-width: 160px;
+										}
+
+										&:first-child{
+											min-width: 50vw;
+											max-width: 50%;
+
+											@media screen and (min-width: 600px){
+												min-width: 260px;
+											}
+										}
+									}
+
+									&:first-child{
+										text-align: left;
+										cursor: pointer;
+									}
+
+									&:last-child{
+										display: flex;
+										align-items: center;
+										justify-content: start;
+									}
+
+									input{
+										display: inline-block;
+										font-size: inherit;
+										color: inherit;
+
+										&[type=text],
+										&[type=number]{
+											background-color: $secondary-color;
+											width: 5em;
+											height: 22px;
+											border-radius: 3px;
+											padding: 4px 5px;
+
+											@media screen and (min-width: 400px){
+												width: 10em;
+												min-width: 3em;
+											}
+
+											&.error{
+												border: 1px solid $error-color;
+											}
+										}
+									}
+								}
+							}
+
+							> input[type=submit]{
+								background-color: $secondary-color;
+								display: block;
+								color: inherit;
+								width: 100px;
+								margin: 12pt auto;
+								padding: 4pt 0;
+								border-radius: 4pt;
+								cursor: pointer;
+								font-size: inherit;
+							}
+
+							&:not([active]){
+								display: none;
+							}
+						}
+					}
+
+					> div{
+						display: flex;
+						flex-direction: column;
+						flex-wrap: nowrap;
+						gap: 10px;
+
+						> p{
+							display: block;
+							text-align: center;
+							font-size: 18px;
+							font-weight: normal;
+							overflow-x: auto;
+							width: inherit;
+
+							-ms-overflow-style: none;
+							scrollbar-width: none;
+
+							&::-webkit-scrollbar{
+								display: none;
+							}
+
+							mjx-assistive-mml{
+								padding: 0!important;
+							}
+
+							@media screen and (max-width: 350px){
+								font-size: 10px;
+							}
+
+							@media screen and (min-width: 350px) and (max-width: 500px){
+								font-size: 12px;
+							}
+
+							@media screen and (min-width: 500px) and (max-width: 600px){
+								font-size: 14px;
+							}
+						}
+
+						&.error > p{
+							color: $error-color;
+							font-family: "Segoe UI", Verdana, Arial;
+						}
+					}
+
+					noscript{
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						height: 100%;
+
+						p{
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
+	}
+}

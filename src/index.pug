@@ -1,0 +1,122 @@
+doctype html
+html(lang="en")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		title Coulomb's Law
+		meta(name="description" content="Calculates the amount of force between two stationary and electrically charged particles.")
+		link(rel="stylesheet" href="styles/main.css")
+		script(src="scripts/index.js" async)
+		script.
+			MathJax = {
+				tex: {
+					inlineMath: [
+						["$", "$"],
+						["\\(", "\\)"]
+					]
+				}
+			}
+	body
+		main
+			header
+				h1 Coulomb's Law
+			article
+				section#constant
+					label
+						p Coulomb's constant
+						p
+							input(type="number" value="9" min="8.9" max="9" title="This field should only contain numbers and a point (.)" list="constants" step="any")
+							//- | &times; 10<sup>9</sup> Nm<sup>2</sup>C<sup>-2</sup>
+							| $\sf\ \times\ 10^9\ \dfrac{Nm^2}{C^2}$
+					datalist#constants
+						option(value="8.998")
+						option(value="8.99")
+						option(value="8.9")
+						option(value="9")
+				section#content
+					header
+						p Select what you want to calculate:
+					nav
+						ol
+							li(data-id="force") Force
+							li(data-id="charge") Charge
+							li(data-id="distance") Distance
+					section
+						menu
+							mixin TextInput(title, unit)
+								label
+									p= title
+										span  (#{unit})
+									p
+										input(type="text")
+
+							-
+								const list = [
+									{
+										id: "force",
+										inputs: [
+											{
+												title: "First charge",
+												unit: "C"
+											},
+											{
+												title: "Second charge",
+												unit: "C"
+											},
+											{
+												title: "Distance",
+												unit: "m"
+											}
+										]
+									},
+									{
+										id: "charge",
+										inputs: [
+											{
+												title: "Force",
+												unit: "N"
+											},
+											{
+												title: "Second charge",
+												unit: "C"
+											},
+											{
+												title: "Distance",
+												unit: "m"
+											}
+										]
+									},
+									{
+										id: "distance",
+										inputs: [
+											{
+												title: "Force",
+												unit: "N"
+											},
+											{
+												title: "First charge",
+												unit: "C"
+											},
+											{
+												title: "Second charge",
+												unit: "C"
+											}
+										]
+									}
+								]
+
+							each item in list
+								li(id=item.id)
+
+									each input in item.inputs
+										- const { title, unit } = input
+										+TextInput(title, unit)
+
+									input(type="submit" value="Submit")
+
+						div#result
+
+						noscript
+							style
+								| #result{ display: none }
+							p This website doesn't work with JavaScript disabled

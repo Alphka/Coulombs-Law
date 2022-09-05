@@ -1,0 +1,35 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ESNext",
+		"moduleResolution": "Node",
+		"strict": true,
+		"allowJs": true,
+		"checkJs": false,
+		"sourceMap": true,
+		"lib": [
+			"ESNext"
+		],
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"typeRoots": [
+			"./typings",
+			"./node_modules/@types"
+		],
+		"outDir": "dist"
+	},
+	"exclude": [
+		"node_modules",
+		"gulp",
+		"dist",
+		"build"
+	],
+	"typeAcquisition": {
+		"enable": true
+	},
+	"ts-node": {
+		"compilerOptions": {
+			"module": "CommonJS"
+		}
+	}
+}

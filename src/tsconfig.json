@@ -1,0 +1,11 @@
+{
+	"extends": "..",
+	"compilerOptions": {
+		"module": "ES6",
+		"lib": [
+			"ESNext",
+			"DOM",
+			"DOM.Iterable"
+		]
+	}
+}
