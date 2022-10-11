@@ -85,7 +85,7 @@ const config: Configuration = {
 	}
 }
 
-if(isDevelopment){
+if(isDevelopment || config.watch || process.argv.slice(2).some(arg => /-(w|-watch)/i.test(arg))){
 	config.plugins = [
 		new WatchedGlobEntries(),
 		new BrowserSync({

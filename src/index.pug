@@ -2,13 +2,19 @@ doctype html
 html(lang="en")
 	head
 		meta(charset="UTF-8")
-		meta(name="viewport" content="width=device-width, initial-scale=1.0")
-		title Coulomb's Law
+		meta(name="color-scheme" content="dark")
+		meta(name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no")
+		meta(name="author" content="Alphka")
 		meta(name="description" content="Calculates the amount of force between two stationary and electrically charged particles.")
+		meta(name="keywords" content="Coulomb, law, electrostatic, force")
+		meta(property="og:type" content="website")
+		meta(property="og:locale" content="en_US")
+		meta(name="theme-color" content="#082032")
+		title Coulomb's Law
 		link(rel="stylesheet" href="styles/main.css")
 		script(src="scripts/index.js" async)
 		script.
-			MathJax = {
+			window.MathJax = {
 				tex: {
 					inlineMath: [
 						["$", "$"],
@@ -26,7 +32,6 @@ html(lang="en")
 						p Coulomb's constant
 						p
 							input(type="number" value="9" min="8.9" max="9" title="This field should only contain numbers and a point (.)" list="constants" step="any")
-							//- | &times; 10<sup>9</sup> Nm<sup>2</sup>C<sup>-2</sup>
 							| $\sf\ \times\ 10^9\ \dfrac{Nm^2}{C^2}$
 					datalist#constants
 						option(value="8.998")
