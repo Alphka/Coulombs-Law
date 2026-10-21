@@ -1,7 +1,9 @@
 {
 	"name": "coulombs-law",
-	"author": "Alphka",
+	"author": "Kayo Souza",
 	"version": "1.0.0",
+	"license": "ISC",
+	"private": true,
 	"scripts": {
 		"webpack": "cross-env TS_NODE_PROJECT=\"webpack.tsconfig.json\" webpack --config webpack.config.ts",
 		"webpack:dev": "npm run webpack -- --node-env development",
@@ -16,11 +18,10 @@
 		"watch": "npm-run-all --parallel gulp:watch webpack:watch",
 		"watch:dev": "npm-run-all --parallel gulp:watch:dev webpack:watch:dev"
 	},
-	"keywords": [
-		"Coulomb",
-		"Force",
-		"Electrostatic"
-	],
+	"dependencies": {
+		"express": "^4.18.1",
+		"mathjs": "^11.1.0"
+	},
 	"devDependencies": {
 		"@babel/plugin-proposal-nullish-coalescing-operator": "^7.18.6",
 		"@babel/plugin-proposal-optional-chaining": "^7.18.9",
@@ -47,12 +48,22 @@
 		"cross-env": "^7.0.3",
 		"npm-run-all": "^4.1.5"
 	},
-	"dependencies": {
-		"express": "^4.18.1",
-		"mathjs": "^11.1.0"
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Alphka/Coulombs-Law.git"
 	},
+	"bugs": {
+		"url": "https://github.com/Alphka/Coulombs-Law/issues"
+	},
+	"homepage": "https://github.com/Alphka/Coulombs-Law#readme",
+	"keywords": [
+		"coulomb",
+		"electrostatic",
+		"force"
+	],
 	"engines": {
 		"node": ">=16",
 		"npm": ">=8"
-	}
+	},
+	"type": "commonjs"
 }
