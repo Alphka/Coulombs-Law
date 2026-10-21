@@ -105,6 +105,7 @@ export default class Calculate {
 		if(!isNumber(force)) throw `force is not a number (${force})`
 		if(!isNumber(charge1)) throw `charge1 is not a number (${charge1})`
 		if(!isNumber(charge2)) throw `charge2 is not a number (${charge2})`
+		if(force <= 0) throw "Force must be greater than zero"
 
 		this.steps.push(`${ToLatex(force)} = \\dfrac{${ToLatex(constant)} \\times ${ToLatex(charge1)} \\times ${ToLatex(charge2)}}{d^{2}}`)
 		this.steps.push(`d^{2} = \\dfrac{${ToLatex(constant)} \\times ${ToLatex(this.chain = Multiply(charge1, charge2))}}{${ToLatex(force)}}`)
