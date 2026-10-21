@@ -66,9 +66,7 @@ HeadPromise.then(() => {
 		script.integrity = "sha512-qUD6aWQY0c9uVWnPVcbUzQg9Q06qfCpZhOK7jbWDKEAuX+i6gwS5P2VoDe+ZghmUepiB1FtBY5gNosseexrt9Q=="
 	).catch(() => InsertAsyncScript("/scripts/math.js"))
 
-	InsertCDN("https://polyfill.io/v3/polyfill.min.js?features=es6")
-		.catch(() => console.error(new Error("Error loading polyfill")))
-		.finally(() => InsertCDN("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"))
+	InsertCDN("https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js")
 		.catch(() => InsertAsyncScript("/scripts/mathjax.js"))
 })
 
