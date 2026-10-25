@@ -1,0 +1,17 @@
+{
+	"name": "Coulomb's Law",
+	"short_name": "Coulomb's Law",
+	"description": "Calculates the amount of force between two stationary and electrically charged particles.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#082032",
+	"theme_color": "#082032",
+	"icons": [
+		{
+			"src": "/favicon.svg",
+			"sizes": "any",
+			"type": "image/svg+xml",
+			"purpose": "any"
+		}
+	]
+}

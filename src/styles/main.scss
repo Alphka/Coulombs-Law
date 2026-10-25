@@ -1,318 +1,262 @@
+@use "katex/src/styles/katex.scss" with (
+	$font-folder: "../../node_modules/katex/dist/fonts",
+	$use-woff: false,
+	$use-ttf: false
+);
+
 $primary-color: #082032;
 $secondary-color: #2C394B;
 $terciary-color: #FF4C29;
+$active-color: #004410;
+$surface-color: #141e24;
 $error-color: #ff2f2f;
+$radius: 10px;
 
-*{
+*,
+*::before,
+*::after{
 	margin: 0;
 	padding: 0;
-	border: none;
-	outline: none;
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: transparent;
 }
 
 :root{
-	--font-size: 16px;
-
-	@media screen and (max-width: 276px){
-		--font-size: 10px;
-	}
-
-	@media screen and (min-width: 276px) and (max-width: 600px){
-		--font-size: 14px;
-	}
+	color-scheme: dark;
 }
 
 body{
+	min-height: 100dvh;
 	background-color: $primary-color;
 	color: #eee;
-	font-size: var(--font-size);
 	font-family: Verdana, Tahoma, Georgia, Arial, sans-serif;
+	line-height: 1.4;
+}
+
+:focus-visible{
+	outline: 2px solid $terciary-color;
+	outline-offset: 2px;
 }
 
 main{
-	$max-width: 1000px;
-
-	max-width: $max-width;
-	margin: auto;
+	width: min(100% - 2rem, 62.5rem);
+	margin-inline: auto;
+	padding-block: 0.75rem 2rem;
 
 	> header{
-		display: flex;
-		justify-content: center;
-		max-width: calc(100% - 40px);
-		margin: 10px auto auto;
-		padding-bottom: 20px;
+		padding-bottom: 1.25rem;
 		border-bottom: 1px solid $secondary-color;
+		text-align: center;
+	}
+}
+
+h1{
+	font-size: 2rem;
+}
+
+h2{
+	font-size: 1rem;
+	font-weight: 400;
+	text-align: center;
+}
+
+.notice{
+	margin-top: 1.25rem;
+	text-align: center;
+}
+
+.tool{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	margin-top: 1.25rem;
+}
+
+.constant{
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	text-align: center;
+
+	input{
+		width: 4.5em;
+		padding-right: 0.5em;
+		border: none;
+		border-bottom: 1px solid $secondary-color;
+		background-color: transparent;
+		color: inherit;
+		font: inherit;
+		text-align: right;
+		-moz-appearance: textfield;
+		appearance: textfield;
+
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button,
+		&::-webkit-calendar-picker-indicator{
+			display: none;
+		}
+	}
+}
+
+.calculator{
+	padding-top: 1rem;
+	border-top: 1px solid $secondary-color;
+}
+
+[role=tablist]{
+	display: flex;
+	gap: 2px;
+	margin: 0.75rem 1rem 0;
+}
+
+[role=tab]{
+	flex: 1;
+	padding: 0.4rem 0.6rem;
+	border: none;
+	background-color: $terciary-color;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+	user-select: none;
+
+	&:first-child{
+		border-radius: $radius 0 0 $radius;
 	}
 
-	> article{
+	&:last-child{
+		border-radius: 0 $radius $radius 0;
+	}
+
+	&:not([aria-selected=true]):active{
+		box-shadow: 0 0 5px black inset;
+	}
+
+	&[aria-selected=true]{
+		background-color: $active-color;
+	}
+}
+
+.panels{
+	margin: 1.25rem 1rem 0;
+	padding: 1.25rem 0.5rem;
+	min-height: 12.5rem;
+	border: 1px solid $secondary-color;
+	border-radius: 5px;
+	background-color: $surface-color;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+
+	&[hidden]{
+		display: none;
+	}
+
+	label{
 		display: flex;
-		flex-direction: column;
+		align-items: center;
 		justify-content: center;
-		align-content: center;
+		gap: 0.75rem;
 
-		margin-top: 20px;
-		min-width: 200px;
-		max-width: $max-width;
+		> span{
+			flex: 0 1 16rem;
+			cursor: pointer;
+		}
 
-		> section{
-			margin-bottom: 10px;
+		> input{
+			flex: 0 1 10rem;
+			min-width: 0;
+			height: 1.75rem;
+			padding: 0.25rem 0.4rem;
+			border: 1px solid transparent;
+			border-radius: 3px;
+			background-color: $secondary-color;
+			color: inherit;
+			font: inherit;
 
-			&#constant{
-				> label{
-					display: flex;
-					flex-direction: column;
-					gap: 5px;
-
-					> p{
-						display: block;
-						text-align: center;
-
-						&:nth-child(1){
-							font-weight: 400;
-						}
-
-						&:nth-child(2){
-							input{
-								background-color: transparent;
-								width: 4em;
-								min-width: 3em;
-								color: inherit;
-								text-align: right;
-								font-size: inherit;
-								border-bottom: 1px solid $secondary-color;
-								padding-right: calc(1em - 7px);
-
-								&::-webkit-outer-spin-button,
-								&::-webkit-inner-spin-button{
-									-moz-appearance: none;
-									-webkit-appearance: none;
-									margin: 0;
-								}
-
-								&::-webkit-calendar-picker-indicator{
-									display: none!important;
-									opacity: 0;
-								}
-							}
-						}
-					}
-				}
-			}
-
-			&#content{
-				padding-top: 10px;
-				border-top: 1px solid $secondary-color;
-
-				header{
-					display: flex;
-					justify-content: center;
-				}
-
-				nav{
-					margin-top: 10px;
-
-					ol{
-						display: flex;
-						flex-wrap: nowrap;
-						flex-direction: row;
-						justify-content: center;
-						list-style: none;
-						margin: 0 20px;
-						gap: 2px;
-
-						li{
-							$border-radius: 10px;
-							$active-color: #004410;
-
-							text-align: center;
-							background-color: $terciary-color;
-							display: inline-block;
-							padding: 5px 10px;
-							flex: 1;
-							cursor: pointer;
-							user-select: none;
-
-							&:first-child{
-								border-top-left-radius: $border-radius;
-								border-bottom-left-radius: $border-radius;
-							}
-
-							&:last-child{
-								border-top-right-radius: $border-radius;
-								border-bottom-right-radius: $border-radius;
-							}
-
-							&:not([active]):active{
-								// transform: translate(0, 1px);
-								box-shadow: 0 0 5px black inset;
-							}
-
-							&[active]{
-								background-color: $active-color;
-							}
-						}
-					}
-				}
-
-				section{
-					background-color: #141e24;
-					border: 1px solid $secondary-color;
-					border-radius: 5px;
-					padding: 20px 5px;
-					min-height: 200px;
-					margin: 20px 20px auto;
-
-					menu{
-						padding-top: 4pt;
-						list-style: none;
-
-						li{
-							display: flex;
-							flex-direction: column;
-
-							label{
-								display: flex;
-								justify-content: center;
-								gap: 10px;
-								padding: 3px 0;
-
-								@media screen and (max-width: 360px){
-									justify-content: space-between;
-									padding: 3px;
-									gap: initial;
-								}
-
-								> p{
-									@media screen and (min-width: 360px){
-										min-width: 20vw;
-
-										@media screen and (min-width: 600px){
-											min-width: 160px;
-										}
-
-										&:first-child{
-											min-width: 50vw;
-											max-width: 50%;
-
-											@media screen and (min-width: 600px){
-												min-width: 260px;
-											}
-										}
-									}
-
-									&:first-child{
-										text-align: left;
-										cursor: pointer;
-									}
-
-									&:last-child{
-										display: flex;
-										align-items: center;
-										justify-content: start;
-									}
-
-									input{
-										display: inline-block;
-										font-size: inherit;
-										color: inherit;
-
-										&[type=text],
-										&[type=number]{
-											background-color: $secondary-color;
-											width: 5em;
-											height: 22px;
-											border-radius: 3px;
-											padding: 4px 5px;
-
-											@media screen and (min-width: 400px){
-												width: 10em;
-												min-width: 3em;
-											}
-
-											&.error{
-												border: 1px solid $error-color;
-											}
-										}
-									}
-								}
-							}
-
-							> input[type=submit]{
-								background-color: $secondary-color;
-								display: block;
-								color: inherit;
-								width: 100px;
-								margin: 12pt auto;
-								padding: 4pt 0;
-								border-radius: 4pt;
-								cursor: pointer;
-								font-size: inherit;
-							}
-
-							&:not([active]){
-								display: none;
-							}
-						}
-					}
-
-					> div{
-						display: flex;
-						flex-direction: column;
-						flex-wrap: nowrap;
-						gap: 10px;
-
-						> p{
-							display: block;
-							text-align: center;
-							font-size: 18px;
-							font-weight: normal;
-							overflow-x: auto;
-							width: inherit;
-
-							-ms-overflow-style: none;
-							scrollbar-width: none;
-
-							&::-webkit-scrollbar{
-								display: none;
-							}
-
-							mjx-assistive-mml{
-								padding: 0!important;
-							}
-
-							@media screen and (max-width: 350px){
-								font-size: 10px;
-							}
-
-							@media screen and (min-width: 350px) and (max-width: 500px){
-								font-size: 12px;
-							}
-
-							@media screen and (min-width: 500px) and (max-width: 600px){
-								font-size: 14px;
-							}
-						}
-
-						&.error > p{
-							color: $error-color;
-							font-family: "Segoe UI", Verdana, Arial;
-						}
-					}
-
-					noscript{
-						display: flex;
-						justify-content: center;
-						align-items: center;
-						height: 100%;
-
-						p{
-							display: inline-block;
-						}
-					}
-				}
+			&[aria-invalid=true]{
+				border-color: $error-color;
 			}
 		}
+	}
+
+	button[type=submit]{
+		align-self: center;
+		width: 6.25rem;
+		margin-block: 0.75rem;
+		padding: 0.3rem 0;
+		border: none;
+		border-radius: 5px;
+		background-color: $secondary-color;
+		color: inherit;
+		font: inherit;
+		cursor: pointer;
+	}
+}
+
+#result{
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+
+	&:not(:empty){
+		margin-top: 1rem;
+	}
+
+	> p{
+		overflow-x: auto;
+		overflow-y: hidden;
+		text-align: center;
+		font-size: clamp(0.65rem, 0.45rem + 1vw, 1.15rem);
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar{
+			display: none;
+		}
+	}
+
+	&.error > p{
+		color: $error-color;
+		font-family: "Segoe UI", Verdana, Arial, sans-serif;
+		font-size: 1.1rem;
+	}
+}
+
+@media (max-width: 30rem){
+	h1{
+		font-size: 1.6rem;
+	}
+
+	main{
+		width: min(100% - 1rem, 62.5rem);
+	}
+
+	[role=tablist],
+	.panels{
+		margin-inline: 0;
+	}
+
+	form label{
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0.2rem;
+		padding-inline: 0.5rem;
+
+		> span,
+		> input{
+			flex: none;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: reduce){
+	*,
+	*::before,
+	*::after{
+		animation-duration: 0.01ms !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
 	}
 }

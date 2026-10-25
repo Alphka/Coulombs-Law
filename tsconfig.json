@@ -1,35 +1,26 @@
 {
 	"compilerOptions": {
-		"module": "ESNext",
 		"target": "ESNext",
-		"moduleResolution": "Node",
-		"strict": true,
-		"allowJs": true,
-		"checkJs": false,
-		"sourceMap": true,
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
 		"lib": [
-			"ESNext"
+			"ESNext",
+			"DOM",
+			"DOM.Iterable"
 		],
-		"esModuleInterop": true,
-		"allowSyntheticDefaultImports": true,
-		"typeRoots": [
-			"./typings",
-			"./node_modules/@types"
+		"types": [
+			"vite/client",
+			"node"
 		],
-		"outDir": "dist"
+		"strict": true,
+		"noEmit": true,
+		"isolatedModules": true,
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true
 	},
-	"exclude": [
-		"node_modules",
-		"gulp",
-		"dist",
-		"build"
-	],
-	"typeAcquisition": {
-		"enable": true
-	},
-	"ts-node": {
-		"compilerOptions": {
-			"module": "CommonJS"
-		}
-	}
+	"include": [
+		"src",
+		"vite.config.ts"
+	]
 }
