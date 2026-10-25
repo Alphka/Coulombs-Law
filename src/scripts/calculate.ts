@@ -32,6 +32,13 @@ function toLatex(value: number | string){
 	return `${+base.toExponential(12)} \\times 10^{${exponential}}`
 }
 
+/** LaTeX of `value²`, with parentheses only when needed (negative numbers and powers of ten) */
+function squared(value: number){
+	const latex = toLatex(value)
+
+	return /[-\\]/.test(latex) ? `(${latex})^{2}` : `${latex}^{2}`
+}
+
 /** Guards every intermediate value: an overflow would otherwise be printed as "Infinity × 10^{NaN}" */
 function finite(value: number){
 	if(!isNumber(value)) throw new CalculationError("The result is out of range")
@@ -78,7 +85,7 @@ export function calculateForce(constantValue: string, charge1Value: string, char
 
 	let chain = finite(multiply(charge1, charge2))
 
-	steps.push(`F = \\dfrac{${toLatex(constant)} \\times ${toLatex(charge1)} \\times ${toLatex(charge2)}}{(${toLatex(distance)})^{2}}`)
+	steps.push(`F = \\dfrac{${toLatex(constant)} \\times ${toLatex(charge1)} \\times ${toLatex(charge2)}}{${squared(distance)}}`)
 	steps.push(`F = \\dfrac{${toLatex(constant)} \\times ${toLatex(chain)}}{${toLatex(distanceSquared)}}`)
 	steps.push(`F = \\dfrac{${toLatex(chain = finite(multiply(chain, constant)))}}{${toLatex(distanceSquared)}}`)
 	steps.push(`F = ${toLatex(chain = finite(divide(chain, distanceSquared)))}\\ N`)
@@ -104,7 +111,7 @@ export function calculateCharge(constantValue: string, forceValue: string, charg
 	const numerator = finite(multiply(force, distanceSquared))
 	const denominator = finite(multiply(constant, charge2))
 
-	steps.push(`${toLatex(force)} = ${toLatex(constant)} \\times \\dfrac{q \\times ${toLatex(charge2)}}{(${toLatex(distance)})^{2}}`)
+	steps.push(`${toLatex(force)} = ${toLatex(constant)} \\times \\dfrac{q \\times ${toLatex(charge2)}}{${squared(distance)}}`)
 	steps.push(`\\dfrac{${toLatex(force)}}{${toLatex(constant)}} = \\dfrac{q \\times ${toLatex(charge2)}}{${toLatex(distanceSquared)}}`)
 	steps.push(`q = \\dfrac{${toLatex(force)} \\times ${toLatex(distanceSquared)}}{${toLatex(constant)} \\times ${toLatex(charge2)}}`)
 	steps.push(`q = \\dfrac{${toLatex(numerator)}}{${toLatex(denominator)}}`)
