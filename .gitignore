@@ -4,8 +4,13 @@ node_modules/
 .pnp.*
 .yarn/
 
+# Next.js
+.next/
+out/
+next-env.d.ts
+messages/*.d.json.ts
+
 # Build output
-dist/
 *.tsbuildinfo
 
 # Vercel
@@ -107,3 +112,6 @@ $RECYCLE.BIN/
 .fleet/
 .nova/
 .zed/
+
+.eslintcache
+.cspellcache

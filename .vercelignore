@@ -4,7 +4,7 @@
 .vscode
 .editorconfig
 .gitattributes
-dist
 .env*
 *.log
 *.md
+.ncurc.json

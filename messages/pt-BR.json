@@ -1,0 +1,45 @@
+{
+	"metadata": {
+		"title": "Lei de Coulomb",
+		"description": "Calcula a intensidade da força entre duas partículas eletricamente carregadas e em repouso."
+	},
+	"languageSwitcher": {
+		"label": "Idioma",
+		"en": "English",
+		"pt-BR": "Português (Brasil)"
+	},
+	"calculator": {
+		"title": "Lei de Coulomb",
+		"select": "Selecione o que você quer calcular:",
+		"submit": "Calcular",
+		"result": "Resultado",
+		"tabs": {
+			"force": "Força",
+			"charge": "Carga",
+			"distance": "Distância"
+		}
+	},
+	"fields": {
+		"constant": "Constante de Coulomb",
+		"force": "Força",
+		"charge1": "Primeira carga",
+		"charge2": "Segunda carga",
+		"distance": "Distância"
+	},
+	"errors": {
+		"missing": "Informe um valor para o campo \"{field}\".",
+		"invalid": "\"{field}\" deve ser um número, como 3, 0,5 ou 1,6e-19.",
+		"exponent": "O expoente de \"{field}\" deve estar entre -{limit, number} e {limit, number}.",
+		"constantRange": "A constante de Coulomb deve estar entre {min, number} e {max, number}.",
+		"distanceNotPositive": "A distância deve ser maior que zero.",
+		"forceNegative": "A força não pode ser negativa.",
+		"forceNotPositive": "A força deve ser maior que zero.",
+		"chargeZero": "A segunda carga não pode ser zero.",
+		"unexpected": "Algo deu errado. Tente novamente."
+	},
+	"notFound": {
+		"title": "Página não encontrada",
+		"description": "A página que você procura não existe.",
+		"home": "Ir para a calculadora"
+	}
+}

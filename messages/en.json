@@ -1,0 +1,45 @@
+{
+	"metadata": {
+		"title": "Coulomb's Law",
+		"description": "Calculates the amount of force between two stationary and electrically charged particles."
+	},
+	"languageSwitcher": {
+		"label": "Language",
+		"en": "English",
+		"pt-BR": "Português (Brasil)"
+	},
+	"calculator": {
+		"title": "Coulomb's Law",
+		"select": "Select what you want to calculate:",
+		"submit": "Submit",
+		"result": "Result",
+		"tabs": {
+			"force": "Force",
+			"charge": "Charge",
+			"distance": "Distance"
+		}
+	},
+	"fields": {
+		"constant": "Coulomb's constant",
+		"force": "Force",
+		"charge1": "First charge",
+		"charge2": "Second charge",
+		"distance": "Distance"
+	},
+	"errors": {
+		"missing": "Enter a value for the field \"{field}\".",
+		"invalid": "\"{field}\" must be a number, such as 3, 0.5 or 1.6e-19.",
+		"exponent": "The exponent of \"{field}\" must be between -{limit, number} and {limit, number}.",
+		"constantRange": "Coulomb's constant must be between {min, number} and {max, number}.",
+		"distanceNotPositive": "The distance must be greater than zero.",
+		"forceNegative": "The force cannot be negative.",
+		"forceNotPositive": "The force must be greater than zero.",
+		"chargeZero": "The second charge cannot be zero.",
+		"unexpected": "Something went wrong. Please try again."
+	},
+	"notFound": {
+		"title": "Page not found",
+		"description": "The page you are looking for does not exist.",
+		"home": "Go to the calculator"
+	}
+}

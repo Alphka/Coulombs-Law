@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+@theme {
+	--color-*: initial;
+
+	--color-page: #0b1220;
+	--color-surface: #111c30;
+	--color-raised: #1b2a45;
+	--color-outline: #5b7199;
+	--color-content: #e8eef8;
+	--color-muted: #a9b9d3;
+	--color-accent: #38bdf8;
+	--color-on-accent: #04111f;
+	--color-danger: #ff8c8c;
+	--color-focus: #fbbf24;
+}
+
+@layer base {
+	:root{
+		color-scheme: dark only;
+	}
+
+	:focus-visible{
+		@apply outline-2 outline-offset-2 outline-focus;
+	}
+
+	button:not(:disabled){
+		cursor: pointer;
+	}
+
+	math{
+		font-size: 1.25em;
+	}
+
+	input[type="number"]{
+		appearance: textfield;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button,
+		&::-webkit-calendar-picker-indicator{
+			appearance: none;
+			margin: 0;
+			display: none;
+		}
+	}
+}

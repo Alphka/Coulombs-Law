@@ -1,4 +1,15 @@
+dedupePeers: true
+overrides:
+  eslint: ^10.13.0
+  glob: ^13.0.6
+  globals: ^17.13.0
 allowBuilds:
   '@parcel/watcher': false
+  '@swc/core': true
+  sharp: true
+  unrs-resolver: true
 minimumReleaseAge: 0
 verifyDepsBeforeRun: warn
+strictPeerDependencies: true
+allowedDeprecatedVersions:
+  whatwg-encoding: ^3.1.1

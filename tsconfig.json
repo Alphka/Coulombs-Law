@@ -1,26 +1,60 @@
 {
 	"compilerOptions": {
-		"target": "ESNext",
 		"module": "ESNext",
-		"moduleResolution": "Bundler",
-		"lib": [
-			"ESNext",
-			"DOM",
-			"DOM.Iterable"
-		],
-		"types": [
-			"vite/client",
-			"node"
-		],
+		"target": "ES2024",
+		"allowJs": true,
+		"checkJs": true,
 		"strict": true,
-		"noEmit": true,
+		"jsx": "react-jsx",
+		"moduleResolution": "Bundler",
 		"isolatedModules": true,
-		"verbatimModuleSyntax": true,
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowArbitraryExtensions": true,
+		"resolveJsonModule": true,
 		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true
+		"incremental": true,
+		"types": [
+			"node",
+			"jest"
+		],
+		"lib": [
+			"DOM",
+			"DOM.Iterable",
+			"ESNext"
+		],
+		"plugins": [
+			{ "name": "next" }
+		],
+		"paths": {
+			"@components/*": ["./src/app/components/*"],
+			"@entities/*": ["./src/app/entities/*"],
+			"@helpers/*": ["./src/app/helpers/*"],
+			"@testing/*": ["./src/testing/*"],
+			"@i18n/*": ["./src/i18n/*"],
+			"@app/*": ["./src/app/*"]
+		},
+		"typeRoots": [
+			"node_modules/@types",
+			"src/typings"
+		],
+		"noEmit": true
 	},
 	"include": [
-		"src",
-		"vite.config.ts"
-	]
+		"**/*.ts",
+		"**/*.tsx",
+		"**/*.js",
+		"**/*.jsx",
+		"**/*.mjs",
+		"next-env.d.ts",
+		".next/types/**/*.ts",
+		".next/dev/types/**/*.ts"
+	],
+	"exclude": [
+		"node_modules"
+	],
+	"typeAcquisition": {
+		"enable": true
+	}
 }
